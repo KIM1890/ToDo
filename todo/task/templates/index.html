@@ -1,0 +1,66 @@
+{% extends 'pages/base.html' %}
+{% load crispy_forms_filters %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-info">
+    <strong>{{message}}</strong>
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="row" style="text-align:center">
+    <h><b>__TODO LIST__</b></h>
+    <hr>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        {% for task in task_list %}
+        <div class="card">
+            <div style="text-align: center">
+                <b>{{ task.title }}</b>
+            </div>
+            <hr>
+            {{ task.date }}
+            <br />
+            <br />
+            <!-- remove -->
+            <form action="/del/{{task.id}}" method="POST" style=" padding-right: 4%; padding-bottom: 3%;">
+                {% csrf_token %}
+                <button value="remove" type="submit" class="btn btn-primary" style="float: right;">
+                    <span class="glyphicon glyphicon-trash"></span> &nbsp; remove
+                </button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="col-md-1"> </div>
+    <div class="col-md-3">
+            <div class="submit_form">
+                <form method="POST">
+                        {% csrf_token %}
+                        {{forms|crispy}}
+                        <br>
+                        <div style="text-align:center">
+                            <input type="submit" value="Submit" class="btn btn-primary">
+                        </div>
+                </form>
+            </div>
+    </div>
+    <!-- <div class="col-md-3">
+        <div class="submit_form">
+            <form method="POST">
+                {% csrf_token %}
+                {{forms|crispy}}
+                <div style="text-align: center;">
+                    <input type="submit" class="btn btn-default" value="submit" />
+                </div>
+            </form>
+        </div>
+    </div> -->
+</div>
+{% endblock %}
