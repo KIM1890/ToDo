@@ -1,0 +1,25 @@
+{% extends 'pages/base.html' %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% block content %}
+
+<div class="title">
+    __TODO LIST__
+</div>
+<hr>
+<div class="row submit_form">
+    <div class="card card-body">
+        <p>Are you sure you want to delete "{{item.title}}"?</p>
+
+        <form action="{% url 'del' item.id  %}" method="POST">
+
+            {% csrf_token %}
+            <a class="btn btn-warning" href="{% url 'todo' %}">Cancel</a>
+
+            <input class="btn btn-danger" type="submit" name="Delete">
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

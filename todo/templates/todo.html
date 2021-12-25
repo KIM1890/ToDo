@@ -1,0 +1,51 @@
+{% extends 'pages/base.html' %}
+{% load crispy_forms_filters %}
+{% block title %}
+Todo
+{% endblock %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-info">
+    <strong>{{message}}</strong>
+</div>
+{% endfor %}
+{% endif %}
+<div class="title">
+    __TODO LIST__
+</div>
+<hr>
+
+<div class="row submit_form">
+    <div class="col-md-8">
+        {% for task in task_list %}
+        <div class="card">
+            <div class="card-body">
+                <div style="text-align: center" class='contents'>
+                    <h4>{{task.title}}</h4>
+                    <p>{{ task.content }}</p>
+                </div>
+                <hr>
+                <i>{{ task.date }}</i>
+                <br><br>
+                <!-- remove -->
+                <a class="btn btn-sm btn-info" href="{% url 'edit' task.id %}">Update</a>
+                <a class="btn btn-sm btn-danger" href="{% url 'del' task.id %}">Delete</a>
+               
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+    <div class="col-md-4">
+        <form method="POST">
+            {% csrf_token %}
+            {{forms.title|as_crispy_field}}
+            {{forms.content|as_crispy_field}}
+            <button type="submit" value="submit" class="btn btn-primary">Add a Task</button>
+        </form>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'pages/base.html' %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% block content %}
+
+<div class="title">
+    __TODO LIST__
+</div>
+<hr>
+<div class="row submit_form">
+        <div class="card card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{forms.title|as_crispy_field}}
+                {{forms.content|as_crispy_field}}
+                <input type="submit" name="Update Task">
+            </form>
+    </div>
+</div>
+
+
+{% endblock %}

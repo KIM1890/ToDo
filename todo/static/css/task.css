@@ -1,0 +1,30 @@
+.submit_form {
+    text-align: center;
+    padding: 3%;
+    background-image: url('../img/beach.jpg');
+    border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4),
+    0 6px 20px 0 rgba(0, 0, 0, 0.36);
+}
+.card {
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5),
+    0 6px 20px 0 rgba(0, 0, 0, 0.39);
+    background-image: url('../img/noel1.jpg');
+    margin-bottom: 5%;
+    border-radius: 25px;
+    padding: 2%;
+    overflow: auto;
+    resize: both;
+    text-overflow: ellipsis;
+}
+
+body{
+    background-image: url('../img/noel.jpg');
+}
+
+.title{
+    text-align: center;
+    color: orangered;
+}
+
